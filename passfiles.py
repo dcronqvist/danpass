@@ -50,3 +50,9 @@ def add_entry(site, username, password):
     entries.append(entry)
     save_entries(entries)
 
+def get_entry(site):
+    entries = load_entries()
+    for entry in entries:
+        if entry["site"] == site:
+            return entry
+
