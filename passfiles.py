@@ -52,7 +52,9 @@ def add_entry(site, username, password):
 
 def get_entry(site):
     entries = load_entries()
+    found_entries = list()
     for entry in entries:
         if entry["site"] == site:
-            return entry
+            found_entries.append(entry)
+    return found_entries
 
