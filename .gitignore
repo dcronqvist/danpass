@@ -1,6 +1,8 @@
 # My own ignores
 config.json
 *.key
+passwords.json
+/.vscode
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,3 +1,4 @@
 {
-    "key-file": "key.key"
+    "key-file": "key-file.key",
+    "passwords-file": "some-password-file.json"
 }
