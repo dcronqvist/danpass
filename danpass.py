@@ -3,7 +3,7 @@ import passfiles
 import argparse
 
 parser = argparse.ArgumentParser(description="Manage your passwords!")
-parser.add_argument("A", metavar='A', help="The action to take, 'find', 'add', 'update' or 'delete'")
+parser.add_argument("A", metavar='A', help="The action to take: 'find', 'add', 'update' or 'delete'")
 parser.add_argument("-s", "--site", metavar="S", help="Specifies site for action")
 parser.add_argument("-u", "--username", metavar="U", help="Specifies username for action")
 parser.add_argument("-p", "--password", metavar="P", help="Specifies password for action")
