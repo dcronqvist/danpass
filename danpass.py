@@ -30,7 +30,7 @@ if args.A.lower() == 'find':
 
 # ADD
 if args.A.lower() == 'add' and args.site and args.username and args.password:
-    entry = passfiles.add_entry(args.site, args.username, args.password)
+    entry = passfiles.add_entry(args.site, args.username, args.password, None)
     print("Added new entry!")
     print("-----------------------------------")
     print_entry(entry)
@@ -47,4 +47,22 @@ if args.A.lower() == 'delete' and ((args.site and args.username and args.passwor
     else:
         print("Could not find such an entry.")
 
+# UPDATE
+if args.A.lower() == "update" and ((args.site and args.username and args.password) or args.id >= 0):
+    if args.id and args.id >= 0:
+        entry = passfiles.find_entry_by_id(args.id)
+    if args.site and args.username and args.password:
+        entry = passfiles.find_entry_by_info(args.site, args.username, args.password)
+    print("Found entry:")
+    print("-----------------------------------")
+    print_entry(entry)
+    print("-----------------------------------")
+    new_username = input("New username: ")
+    new_password = input("New password: ")
+    updated = passfiles.update_entry(entry["site"], entry["username"], entry["password"], new_username, new_password, entry["id"])
+    print("-----------------------------------")
+    print("Updated entry to: ")
+    print("-----------------------------------")
+    print_entry(updated)
+    print("-----------------------------------")
 

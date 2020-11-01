@@ -44,7 +44,7 @@ def load_entries():
     else:
         return None
 
-def add_entry(site, username, password):
+def add_entry(site, username, password, forced_id):
     entries = load_entries()
     new_id = 0
 
@@ -52,6 +52,9 @@ def add_entry(site, username, password):
         new_id = entries[-1]["id"] + 1
     else:
         entries = list()
+
+    if forced_id >= 0:
+        new_id = forced_id
 
     entry = {
         "id": new_id,
@@ -81,9 +84,9 @@ def delete_entry(site, username, password, e_id):
                 return True, entry
     return False, None
 
-def update_entry(site, old_username, old_password, new_username, new_password):
-    if delete_entry(site, old_username, old_password, None):
-        return add_entry(site, new_username, new_password)
+def update_entry(site, old_username, old_password, new_username, new_password, e_id):
+    if delete_entry(site, old_username, old_password, e_id):
+        return add_entry(site, new_username, new_password, e_id)
     return None
 
 def get_entries(site):
@@ -98,6 +101,20 @@ def get_entries(site):
         return entries
     else:
         return []
+
+def find_entry_by_id(e_id):
+    entries = load_entries()
+    for entry in entries:
+        if entry["id"] == e_id:
+            return entry
+    return None
+
+def find_entry_by_info(site, username, password):
+    entries = load_entries()
+    for entry in entries:
+        if entry["site"] == site and entry["username"] == username and entry["password"] == password:
+            return entry
+    return None
 
 
 

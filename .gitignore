@@ -1,7 +1,7 @@
 # My own ignores
 config.json
 *.key
-passwords.json
+passwords.pass
 /.vscode
 
 # Byte-compiled / optimized / DLL files
