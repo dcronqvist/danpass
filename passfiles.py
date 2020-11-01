@@ -76,21 +76,30 @@ def add_entry(site, username, password, forced_id):
     return entry
 
 def delete_entry(site, username, password, e_id):
+    # load all entries from .pass file
     entries = load_entries()
+    # if we have specified an id to be the entry we want to delete
     if e_id >= 0:
+        # look through all entries
         for entry in entries:
+            # find the one we're looking for
             if entry["id"] == e_id:
+                # remove it and save the new list of entries
                 entries.remove(entry)
                 save_entries(entries)
                 return True, entry
 
+    # if we are not using the id of an entry to find it
     if entries and site and username and password:
+        # loop through all entries
         for entry in entries:
+            # find the one we're searching for
             if entry["site"] == site and entry["username"] == username and entry["password"] == password:
-                # found the correct entry!
+                # remove the entry and save the list of entries to file
                 entries.remove(entry)
                 save_entries(entries)
                 return True, entry
+    # if we haven't found the one that was searched for, return None
     return False, None
 
 def update_entry(site, old_username, old_password, new_username, new_password, e_id):
