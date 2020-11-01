@@ -103,8 +103,12 @@ def delete_entry(site, username, password, e_id):
     return False, None
 
 def update_entry(site, old_username, old_password, new_username, new_password, e_id):
+    # if we successfully found and deleted the specified entry
     if delete_entry(site, old_username, old_password, e_id):
+        # then add a new entry with the new details and same id
         return add_entry(site, new_username, new_password, e_id)
+    # if we couldn't delete the spec. entry, either it doesn't exist or something else happened
+    # then return None.
     return None
 
 def get_entries(site):
