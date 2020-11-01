@@ -112,15 +112,24 @@ def update_entry(site, old_username, old_password, new_username, new_password, e
     return None
 
 def get_entries(site):
+    # load all entries in .pass file
     entries = load_entries()
+    # if there are entries in the file and we specified a site to search for
     if entries and site:
+        # create dummy list of found entries
         found_entries = list()
+        # loop through list of entries
         for entry in entries:
+            # find entries that have a matching site
             if entry["site"] == site:
+                # add these entries to the dummy list of entries
                 found_entries.append(entry)
+        # return this dummy list of found entries.
         return found_entries
+    # if there are entries but we didn't specify a site, then return all entries
     elif entries and not site:
         return entries
+    # if there are no entries in the file and we didn't specify a file, then return an empty list
     else:
         return []
 
