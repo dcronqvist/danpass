@@ -134,17 +134,27 @@ def get_entries(site):
         return []
 
 def find_entry_by_id(e_id):
+    # load all entries from file
     entries = load_entries()
+    # loop through all entries
     for entry in entries:
+        # check entry matches id
         if entry["id"] == e_id:
+            # return that entry
             return entry
+    # nothing found, return None
     return None
 
 def find_entry_by_info(site, username, password):
+    # load all entries from file
     entries = load_entries()
+    # loop through
     for entry in entries:
+        # check if entry matches all data
         if entry["site"] == site and entry["username"] == username and entry["password"] == password:
+            # return matched entry
             return entry
+    # nothing found, return None
     return None
 
 
