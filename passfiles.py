@@ -45,24 +45,33 @@ def load_entries():
         return None
 
 def add_entry(site, username, password, forced_id):
+    # load all entries from file
     entries = load_entries()
+    # default the new id for the entry to be 0
     new_id = 0
 
+    # if this is not the first run, then use the latest
+    # entry's id + 1
     if entries and len(entries) > 0:
         new_id = entries[-1]["id"] + 1
+    # if it is the first run, make sure to initialize the entries list
     else:
         entries = list()
 
+    # if we have specified a forced id in the parameters, set the id to this id
     if forced_id >= 0:
         new_id = forced_id
 
+    # create entry object
     entry = {
         "id": new_id,
         "site": site,
         "username": username,
         "password": password
     }
+    # add the new entry to the list of entries
     entries.append(entry)
+    # finally, save the new list of entries to the file of passwords-file
     save_entries(entries)
     return entry
 
