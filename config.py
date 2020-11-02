@@ -1,7 +1,7 @@
 import json
-import os.path
+import os
 
-fi = "config.json"
+fi = os.getcwd() + "/config.json"
 
 def load_settings():
     with open(fi, "rb") as f:

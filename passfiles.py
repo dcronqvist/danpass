@@ -2,6 +2,7 @@ from cryptography.fernet import Fernet
 import crypt
 import config
 import json
+import os
 
 """
 [
@@ -26,14 +27,14 @@ def save_entries(entries):
     # encrypt json
     encrypted = f.encrypt(j.encode())
     # save to file
-    with open(config.get_setting("passwords-file"), "wb") as file:
+    with open(os.getcwd() + "/" + config.get_setting("passwords-file"), "wb") as file:
         file.write(encrypted)
 
 def load_entries():
     #create fernet object
     f = Fernet(crypt.load_key())
     # read file
-    with open(config.get_setting("passwords-file"), "rb") as file:
+    with open(os.getcwd() + "/" + config.get_setting("passwords-file"), "rb") as file:
         encrypted = file.read()
     # decrypt
     if encrypted and encrypted != "":
