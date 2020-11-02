@@ -3,6 +3,7 @@ import crypt
 import config
 import json
 import os
+import sys
 
 """
 [
@@ -19,6 +20,9 @@ File with encrypted json'd list -> (decrypt) json'd list -> un'json'd list of en
 
 """
 
+def get_script_path():
+    return os.path.dirname(os.path.realpath(sys.argv[0]))
+
 def save_entries(entries):
     # create fernet object
     f = Fernet(crypt.load_key())
@@ -27,14 +31,14 @@ def save_entries(entries):
     # encrypt json
     encrypted = f.encrypt(j.encode())
     # save to file
-    with open(os.getcwd() + "/" + config.get_setting("passwords-file"), "wb") as file:
+    with open(get_script_path() + "/" + config.get_setting("passwords-file"), "wb") as file:
         file.write(encrypted)
 
 def load_entries():
     #create fernet object
     f = Fernet(crypt.load_key())
     # read file
-    with open(os.getcwd() + "/" + config.get_setting("passwords-file"), "rb") as file:
+    with open(get_script_path() + "/" + config.get_setting("passwords-file"), "rb") as file:
         encrypted = file.read()
     # decrypt
     if encrypted and encrypted != "":

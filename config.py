@@ -1,7 +1,11 @@
 import json
 import os
+import sys
 
-fi = os.getcwd() + "/config.json"
+def get_script_path():
+    return os.path.dirname(os.path.realpath(sys.argv[0]))
+
+fi = get_script_path() + "/config.json"
 
 def load_settings():
     with open(fi, "rb") as f:
