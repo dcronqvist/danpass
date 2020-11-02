@@ -64,7 +64,7 @@ def add_entry(site, username, password, forced_id):
         entries = list()
 
     # if we have specified a forced id in the parameters, set the id to this id
-    if forced_id >= 0:
+    if forced_id and forced_id >= 0:
         new_id = forced_id
 
     # create entry object
