@@ -21,12 +21,12 @@ def print_entry(entry, end=False):
 # FIND - Search for entries in the .pass file
 if args.A.lower() == 'find':
     # get all entries that match with the given site
-    # if args.site == None, then entries is a list of 
+    # if args.site == None, then entries is a list of
     # all saved entries in the file
     entries = passfiles.get_entries(args.site)
     # print how many entries that were found
     print(f"Found {len(entries)} entries in danpass.")
-    # if we specified in the call that we want to list 
+    # if we specified in the call that we want to list
     # the found entries (-l), then list them
     if args.list and len(entries) > 0:
         print("-----------------------------------")
@@ -83,4 +83,3 @@ if args.A.lower() == "update" and ((args.site and args.username and args.passwor
     print("-----------------------------------")
     print_entry(updated)
     print("-----------------------------------")
-

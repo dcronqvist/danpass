@@ -126,7 +126,7 @@ def get_entries(site):
         # loop through list of entries
         for entry in entries:
             # find entries that have a matching site
-            if entry["site"] == site:
+            if site in entry["site"]:
                 # add these entries to the dummy list of entries
                 found_entries.append(entry)
         # return this dummy list of found entries.
