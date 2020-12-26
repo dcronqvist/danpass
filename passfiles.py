@@ -165,6 +165,3 @@ def find_entry_by_info(site, username, password):
             return entry
     # nothing found, return None
     return None
-
-
-
