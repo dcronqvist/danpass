@@ -1,4 +1,3 @@
-import crypt
 import passfiles
 import argparse
 
