@@ -9,8 +9,14 @@ fi = get_script_path() + "/config.json"
 
 def load_settings():
     if not os.path.exists(fi):
+
+        def_settings = {
+            "key-file": "key.key",
+            "passwords-file": "passwords.pass"
+        }
+
         with open(fi, "w") as f:
-            f.write(open(get_script_path() + "/config_template.json", "r").read())
+            json.dump(def_settings, f, indent=4)
 
     with open(fi, "rb") as f:
         s = json.load(f)
