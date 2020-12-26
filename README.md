@@ -1,6 +1,20 @@
 # danpass
 A very simple command line interfaced password manager that uses [fernet encryption](https://asecuritysite.com/encryption/fernet) to store passwords securely.
 
+## Install
+
+Easy installation:
+
+```shell
+$ git clone https://github.com/dcronqvist/danpass
+$ cd danpass
+$ sudo sh ./install.sh  # It'll install it by making a symlink to its location from /usr/local/bin/danpass
+```
+
+Or if you prefer a one-line method:
+
+`$ git clone https://github.com/dcronqvist/danpass && cd danpass && sudo sh ./install.sh`
+
 ## How to use
 
 Get started by getting familiar with the different commands that exist, you can of course check it all out using `-h`. So by just running `$ danpass -h` will display a bunch of help text.
