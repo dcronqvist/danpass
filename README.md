@@ -6,14 +6,14 @@ A very simple command line interfaced password manager that uses [fernet encrypt
 Easy installation:
 
 ```shell
-$ git clone https://github.com/dcronqvist/danpass
-$ cd danpass
-$ sudo sh ./install.sh  # It'll install it by making a symlink to its location from /usr/local/bin/danpass
+git clone https://github.com/dcronqvist/danpass
+cd danpass
+sudo sh ./install.sh  # It'll install it by making a symlink to its location from /usr/local/bin/danpass
 ```
 
 Or if you prefer a one-line method:
 
-`$ git clone https://github.com/dcronqvist/danpass && cd danpass && sudo sh ./install.sh`
+`git clone https://github.com/dcronqvist/danpass && cd danpass && sudo sh ./install.sh`
 
 ## How to use
 
