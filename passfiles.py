@@ -35,18 +35,22 @@ def save_entries(entries):
         file.write(encrypted)
 
 def load_entries():
-    #create fernet object
-    f = Fernet(crypt.load_key())
-    # read file
-    with open(get_script_path() + "/" + config.get_setting("passwords-file"), "rb") as file:
-        encrypted = file.read()
-    # decrypt
-    if encrypted and encrypted != "":
-        decrypted = f.decrypt(encrypted)
-        # unjson
-        entries = json.loads(decrypted)
-        return entries
+    if os.path.exists(get_script_path() + "/" + config.get_setting("passwords-file")):
+        # create fernet object
+        f = Fernet(crypt.load_key())
+        # read file
+        with open(get_script_path() + "/" + config.get_setting("passwords-file"), "rb") as file:
+            encrypted = file.read()
+        # decrypt
+        if encrypted and encrypted != "":
+            decrypted = f.decrypt(encrypted)
+            # unjson
+            entries = json.loads(decrypted)
+            return entries
+        else:
+            return None
     else:
+        open(get_script_path() + "/" + config.get_setting("passwords-file"), "x")
         return None
 
 def add_entry(site, username, password, forced_id):

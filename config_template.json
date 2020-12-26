@@ -1,4 +1,4 @@
 {
-    "key-file": "key-file.key",
-    "passwords-file": "some-password-file.pass"
+    "key-file": "key.key",
+    "passwords-file": "passwords.pass"
 }

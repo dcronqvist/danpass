@@ -8,6 +8,10 @@ def get_script_path():
 fi = get_script_path() + "/config.json"
 
 def load_settings():
+    if not os.path.exists(fi):
+        with open(fi, "w") as f:
+            f.write(open(get_script_path() + "/config_template.json", "r").read())
+
     with open(fi, "rb") as f:
         s = json.load(f)
         return s
@@ -28,5 +32,3 @@ def set_setting(key, value):
     print(settings)
     settings[key] = value
     save_settings(settings)
-    
-    
